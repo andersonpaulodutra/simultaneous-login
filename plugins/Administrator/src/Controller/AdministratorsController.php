@@ -2,13 +2,14 @@
 // plugins/Administrator/src/Controller/AdministratorsController.php
 namespace Administrator\Controller;
 
-use Administrator\Controller\AdministratorsController;
+use App\Controller\AppController;
 
 class AdministratorsController extends AppController
 {
 
     public function index()
     {
-        //...
+      echo "OI";
+      exit;
     }
 }
