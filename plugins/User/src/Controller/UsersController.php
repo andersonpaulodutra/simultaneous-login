@@ -11,7 +11,5 @@ class UsersController extends AppController
     {	
     	$voteShow = "Oi cara de boi";
     	$this->set('voteShow',$voteShow);
-    	echo $voteShow;
-    	exit;
     }
 }
