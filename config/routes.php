@@ -63,6 +63,10 @@ Router::scope('/', function (RouteBuilder $routes) {
      * to use (in this case, src/Template/Pages/home.ctp)...
      */
     $routes->connect('/', ['controller' => 'Pages', 'action' => 'display', 'home']);
+    //Login
+    $routes->connect('/login', ['plugin' => 'User', 'controller' => 'Users', 'action' => 'index']);
+    //ADMIN
+    $routes->connect('/admin', ['plugin' => 'Administrator', 'controller' => 'Administrators', 'action' => 'index']);
 
     /**
      * ...and connect the rest of 'Pages' controller's URLs.
@@ -90,6 +94,7 @@ Router::scope('/', function (RouteBuilder $routes) {
      */
     $routes->fallbacks(DashedRoute::class);
 });
+
 
 /**
  * If you need a different set of middleware or none at all,

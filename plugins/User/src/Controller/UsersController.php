@@ -1,15 +1,17 @@
 <?php
-// plugins/Administrator/src/Controller/AdministratorsController.php
-namespace Administrator\Controller;
+// plugins/User/src/Controller/UsersController.php
+namespace User\Controller;
 
 use App\Controller\AppController;
 
-class AdministratorsController extends AppController
+class UsersController extends AppController
 {
 
     public function index()
     {	
     	$voteShow = "Oi cara de boi";
     	$this->set('voteShow',$voteShow);
+    	echo $voteShow;
+    	exit;
     }
 }

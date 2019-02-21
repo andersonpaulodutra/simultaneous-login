@@ -1,3 +1,4 @@
+<?php
 // plugins/Administrator/src/Model/Table/AdministratorsTable.php:
 namespace Administrator\Model\Table;
 
