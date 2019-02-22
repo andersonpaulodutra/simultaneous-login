@@ -1,0 +1,57 @@
+CREATE TABLE `administrators` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `administrator_group_id` int(11) unsigned DEFAULT NULL,
+  `name` varchar(250) DEFAULT NULL,
+  `username` varchar(150) DEFAULT NULL,
+  `password` varchar(250) DEFAULT NULL,
+  `email` varchar(250) DEFAULT NULL,
+  `forgot_password_token` varchar(250) DEFAULT NULL,
+  `forgot_password_expiry_date` datetime DEFAULT NULL,
+  `status` int(11) DEFAULT NULL,
+  `created` datetime DEFAULT NULL,
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `administrators_administrators_group_id` (`administrator_group_id`),
+  CONSTRAINT `administrators_administrators_group_id` FOREIGN KEY (`administrator_group_id`) REFERENCES `administrator_groups` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE `administrator_groups` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `level_id` int(11) unsigned DEFAULT NULL,
+  `name` varchar(150) DEFAULT NULL,
+  `plugins` text,
+  `navigation_tree` text,
+  `max_file_size` int(11) DEFAULT NULL,
+  `master` int(11) NOT NULL DEFAULT '0',
+  `created` datetime DEFAULT NULL,
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `administrator_groups_level_id` (`level_id`),
+  CONSTRAINT `administrator_groups_level_id` FOREIGN KEY (`level_id`) REFERENCES `administrator_levels` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+CREATE TABLE `administrator_levels` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(150) DEFAULT NULL,
+  `read` int(11) NOT NULL DEFAULT '0',
+  `create` int(11) NOT NULL DEFAULT '0',
+  `update` int(11) NOT NULL DEFAULT '0',
+  `delete` int(11) NOT NULL DEFAULT '0',
+  `created` datetime DEFAULT NULL,
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+CREATE TABLE `users` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(250) DEFAULT NULL,
+  `email` varchar(250) DEFAULT NULL,
+  `password` varchar(250) DEFAULT NULL,
+  `forgot_password_token` varchar(250) DEFAULT NULL,
+  `forgot_password_expiry_date` datetime DEFAULT NULL,
+  `status` int(4) DEFAULT '1',
+  `created` datetime DEFAULT NULL,
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2272 DEFAULT CHARSET=utf8;
